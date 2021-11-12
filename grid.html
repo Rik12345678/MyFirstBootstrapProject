@@ -37,7 +37,7 @@
         <div class="row pt-5">
             <div class="col-sm-6 bg-primary text-white p-5"> Enter The Player Name :  </div>
             <div class="col-sm-6 bg-dark text-white p-5"> Score :  </div>
-            
+          
         </div>
         <table class="table table-bordered bg-dark text-white my-5" id="myTable">
         </table>
@@ -45,15 +45,29 @@
 </body>
 <script>
     var table = document.getElementById("myTable");
-    var count = 0;
-    for (var i = 1; i <= 10; i++) {
+    
+    var tableData = [];
+    for (var i= 0; i<= 9; i++) {
+        tableData[i] = new Array (10);
+    }
+var count = 1;
+for (var i=0;i<=9;i++){
+    for (var j=0;j<=9;j++){
+        tableData[i][j] = count++;
+    }
+}
+tableData.sort(() => Math.random() - 0.5);;
+
+
+
+    for (var i = 0; i <= 9; i++) {
         var tr = document.createElement("tr");
         table.appendChild(tr);
-        for (var j = 1; j <= 10; j++) {
-            count++;
+        for (var j = 0; j <= 9; j++) {
+            
             var td = document.createElement("td");
             tr.appendChild(td);
-            td.innerText = count;
+            td.innerText = tableData[i][j];
         }
     }
 
